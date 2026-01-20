@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scan Me | Gourav ❤️ Nisha</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins,Segoe UI,sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+    animation:pop 1.5s;
+}
+
+h1{
+    margin:0;
+    color:#b22222;
+}
+
+.names{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+#qr{
+    margin:20px auto;
+    padding:15px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 0 25px rgba(255,0,0,.7);
+    animation:glow 2s infinite alternate;
+}
+
+.scan{
+    margin-top:10px;
+    font-size:14px;
+    animation:blink 1.2s infinite;
+}
+
+.footer{
+    margin-top:10px;
+    font-size:13px;
+    opacity:.8;
+}
+
+.confetti{
+    position:fixed;
+    width:8px;
+    height:8px;
+    animation:fall 3s linear infinite;
+}
+
+@keyframes glow{
+    from{box-shadow:0 0 15px red}
+    to{box-shadow:0 0 35px gold}
+}
+@keyframes blink{
+    50%{opacity:.4}
+}
+@keyframes pop{
+    from{transform:scale(.6);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+@keyframes fall{
+    from{top:-10px}
+    to{top:110vh}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>💍 Wedding QR Invite</h1>
+    <div class="names">Gourav Mishra ❤️ Nisha Jha</div>
+
+    <div id="qr"></div>
+
+    <div class="scan">📲 Scan karo & celebration shuru 🎉</div>
+    <div class="footer">Engineer-built invitation 😎</div>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+// 🔗 CHANGE THIS TO YOUR FINAL WEDDING PAGE LINK
+const weddingLink = "https://your-wedding-link-here";
+
+new QRCode(document.getElementById("qr"), {
+    text: weddingLink,
+    width: 200,
+    height: 200
+});
+
+// music on first click (mobile safe)
+document.body.addEventListener("click",()=>{
+    document.getElementById("music").play();
+},{once:true});
+
+// confetti rain
+setInterval(()=>{
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration=2+Math.random()*3+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+},200);
+</script>
+
+</body>
+</html>
