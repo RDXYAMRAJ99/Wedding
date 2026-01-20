@@ -22,6 +22,7 @@ body{
     linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),
     url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e") center/cover fixed;
   transition:.5s;
+  overflow-x:hidden;
 }
 
 /* 🔐 LOCK SCREEN */
@@ -69,8 +70,15 @@ body{
   border-radius:25px;
   box-shadow:0 15px 40px rgba(0,0,0,.5);
   text-align:center;
+  position:relative;
+  animation:shimmer 3s infinite alternate;
 }
 .card:hover{box-shadow:0 0 60px gold;}
+
+@keyframes shimmer{
+  0%{box-shadow:0 15px 40px rgba(255,182,193,.5);}
+  100%{box-shadow:0 20px 60px rgba(255,223,186,.7);}
+}
 
 .ganesh img{width:100px;animation:wiggle 2s infinite;}
 @keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
@@ -146,6 +154,63 @@ h1{font-family:'Great Vibes',cursive;font-size:38px;}
   animation:fall 2s linear forwards;
 }
 @keyframes fall{to{transform:translateY(90vh) rotate(720deg);opacity:0}}
+
+/* 💖 HEARTS */
+.heart{
+  position:fixed;
+  width:15px;
+  height:15px;
+  background:red;
+  transform:rotate(45deg);
+  left:50%;
+  top:50%;
+  opacity:0.8;
+  animation:float 5s linear infinite;
+  z-index:1;
+}
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:15px;
+  height:15px;
+  background:red;
+  border-radius:50%;
+}
+.heart::before{top:-7.5px;left:0;}
+.heart::after{left:-7.5px;top:0;}
+@keyframes float{
+  0%{transform:translateY(0) rotate(45deg) scale(0.5);opacity:0.8;}
+  50%{opacity:1;}
+  100%{transform:translateY(-80vh) rotate(45deg) scale(1);opacity:0;}
+}
+
+/* ✨ SPARKLES */
+.sparkle{
+  position:fixed;
+  width:4px;height:4px;
+  background:yellow;
+  border-radius:50%;
+  opacity:0.8;
+  animation:twinkle 1.5s infinite;
+  z-index:1;
+}
+@keyframes twinkle{
+  0%,100%{transform:scale(1);opacity:0.6;}
+  50%{transform:scale(1.5);opacity:1;}
+}
+
+/* RSVP LIST BOX */
+#list{
+  margin-top:15px;
+  padding:10px;
+  background:rgba(255,228,225,0.5);
+  border-radius:10px;
+  max-height:200px;
+  overflow-y:auto;
+  text-align:left;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -212,17 +277,17 @@ h1{font-family:'Great Vibes',cursive;font-size:38px;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+// Unlock
 function unlock(){
-  if(pass.value==="wedding2026"){
-    lockScreen.style.display="none";
-  }else{
-    error.innerText="❌ Wrong Password";
-  }
+  if(pass.value==="wedding2026"){ lockScreen.style.display="none"; }
+  else{ error.innerText="❌ Wrong Password"; }
 }
 
+// Music & theme
 function toggleMusic(){music.paused?music.play():music.pause()}
 function toggleTheme(){document.body.classList.toggle("dark")}
 
+// Countdown
 function countdown(id,date){
   const d=date-Date.now();
   document.getElementById(id).innerText =
@@ -237,13 +302,17 @@ setInterval(()=>{
   countdown("reception",new Date("March 16, 2026 19:00").getTime());
 },1000);
 
+// QR code
 new QRCode(qrcode,{text:location.href,width:100,height:100});
 
+// RSVP logic
 let data=[];
 function addRSVP(e){
   e.preventDefault();
   data.push({n:name.value,e:email.value,g:guest.value});
-  list.innerHTML=data.map(d=>`${d.n} (${d.g})`).join("<br>");
+  list.innerHTML = data.map(d => `${d.n} (${d.g}) – ${d.e}`).join("<br>");
+
+  // Confetti
   for(let i=0;i<30;i++){
     const c=document.createElement("div");
     c.className="confetti-piece";
@@ -252,6 +321,14 @@ function addRSVP(e){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),2000);
   }
+
+  // Floating hearts
+  const h = document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+
   e.target.reset();
 }
 </script>
