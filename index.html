@@ -8,10 +8,10 @@
 
 <style>
 :root{
-  --bg1:#ff9a9e; --bg2:#fad0c4; --card:#ffffffee; --text:#222;
+  --card:#ffffffee; --text:#222;
 }
 body.dark{
-  --bg1:#0f0f0f; --bg2:#2b2b2b; --card:#111111ee; --text:#fff;
+  --card:#111111ee; --text:#fff;
 }
 
 body{
@@ -25,7 +25,7 @@ body{
   overflow-x:hidden;
 }
 
-/* 🔐 LOCK SCREEN */
+/* LOCK */
 #lockScreen{
   position:fixed;
   inset:0;
@@ -40,14 +40,16 @@ body{
   padding:30px;
   border-radius:20px;
   text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
-.lock-box h2{font-family:'Great Vibes',cursive;font-size:32px;color:#b22222;}
+.lock-box h2{
+  font-family:'Great Vibes',cursive;
+  font-size:32px;
+  color:#b22222;
+}
 .lock-box input{
   padding:10px;
   width:80%;
   border-radius:10px;
-  border:1px solid #ccc;
 }
 .lock-box button{
   margin-top:10px;
@@ -56,28 +58,24 @@ body{
   border-radius:25px;
   background:#b22222;
   color:#fff;
-  cursor:pointer;
   font-weight:bold;
 }
 #error{color:red;margin-top:5px}
 
-/* MAIN CARD */
+/* CARD */
 .card{
-  max-width:480px;
+  max-width:500px;
   margin:40px auto;
   background:var(--card);
   padding:30px;
   border-radius:25px;
   box-shadow:0 15px 40px rgba(0,0,0,.5);
   text-align:center;
-  position:relative;
   animation:shimmer 3s infinite alternate;
 }
-.card:hover{box-shadow:0 0 60px gold;}
-
 @keyframes shimmer{
-  0%{box-shadow:0 15px 40px rgba(255,182,193,.5);}
-  100%{box-shadow:0 20px 60px rgba(255,223,186,.7);}
+  from{box-shadow:0 15px 40px rgba(255,182,193,.5);}
+  to{box-shadow:0 20px 60px rgba(255,223,186,.7);}
 }
 
 .ganesh img{width:100px;animation:wiggle 2s infinite;}
@@ -87,42 +85,54 @@ body{
   border:2px dashed #b22222;
   border-radius:20px;
   padding:8px;
-  margin:12px 0 18px;
+  margin:12px 0;
   overflow:hidden;
 }
 .mantra{
   display:inline-block;
   white-space:nowrap;
-  font-weight:bold;
   color:#b22222;
+  font-weight:bold;
   animation:slide 12s linear infinite;
 }
-@keyframes slide{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+@keyframes slide{
+  from{transform:translateX(100%)}
+  to{transform:translateX(-100%)}
+}
 
 h1{font-family:'Great Vibes',cursive;font-size:38px;}
 .names{font-size:22px;font-weight:bold;}
-.place{margin:6px 0}
+.place{margin:8px 0;font-weight:bold;}
 
 .countdown{
   background:rgba(255,182,193,.35);
-  padding:12px;
+  padding:10px;
   border-radius:15px;
-  margin-top:8px;
+  margin-bottom:10px;
   font-weight:bold;
 }
 
-.btn{
-  margin-top:10px;
-  padding:10px 25px;
+/* GOOGLE FORM */
+iframe{
+  width:100%;
+  height:520px; /* 👈 frame chhota */
   border:none;
-  border-radius:25px;
-  background:#b22222;
-  color:#fff;
-  cursor:pointer;
-  font-weight:bold;
+  border-radius:15px;
 }
-.btn:hover{background:#ffd700;color:#b22222}
 
+/* THANK YOU BOX */
+.thankyou{
+  margin-top:12px;
+  padding:12px;
+  background:rgba(144,238,144,.25);
+  border:2px dashed #2e8b57;
+  border-radius:15px;
+  color:#2e8b57;
+  font-weight:bold;
+  font-size:14px;
+}
+
+/* CONTROLS */
 .control{
   position:fixed;
   right:15px;
@@ -137,86 +147,18 @@ h1{font-family:'Great Vibes',cursive;font-size:38px;}
 .music{top:15px;background:#b22222;color:#fff}
 .theme{top:70px;background:#333;color:#fff}
 
+/* FOOTER */
 .footer{
   margin-top:25px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-}
-.footer img{width:35px;border-radius:50%}
-
-/* CONFETTI */
-.confetti-piece{
-  position:fixed;
-  width:8px;height:8px;
-  animation:fall 2s linear forwards;
-}
-@keyframes fall{to{transform:translateY(90vh) rotate(720deg);opacity:0}}
-
-/* 💖 HEARTS */
-.heart{
-  position:fixed;
-  width:15px;
-  height:15px;
-  background:red;
-  transform:rotate(45deg);
-  left:50%;
-  top:50%;
-  opacity:0.8;
-  animation:float 5s linear infinite;
-  z-index:1;
-}
-.heart::before,
-.heart::after{
-  content:"";
-  position:absolute;
-  width:15px;
-  height:15px;
-  background:red;
-  border-radius:50%;
-}
-.heart::before{top:-7.5px;left:0;}
-.heart::after{left:-7.5px;top:0;}
-@keyframes float{
-  0%{transform:translateY(0) rotate(45deg) scale(0.5);opacity:0.8;}
-  50%{opacity:1;}
-  100%{transform:translateY(-80vh) rotate(45deg) scale(1);opacity:0;}
-}
-
-/* ✨ SPARKLES */
-.sparkle{
-  position:fixed;
-  width:4px;height:4px;
-  background:yellow;
-  border-radius:50%;
-  opacity:0.8;
-  animation:twinkle 1.5s infinite;
-  z-index:1;
-}
-@keyframes twinkle{
-  0%,100%{transform:scale(1);opacity:0.6;}
-  50%{transform:scale(1.5);opacity:1;}
-}
-
-/* RSVP LIST BOX */
-#list{
-  margin-top:15px;
-  padding:10px;
-  background:rgba(255,228,225,0.5);
-  border-radius:10px;
-  max-height:200px;
-  overflow-y:auto;
-  text-align:left;
-  font-weight:bold;
+  font-size:13px;
+  opacity:.85;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 LOCK -->
+<!-- LOCK -->
 <div id="lockScreen">
   <div class="lock-box">
     <h2>Wedding Invite</h2>
@@ -229,7 +171,7 @@ h1{font-family:'Great Vibes',cursive;font-size:38px;}
 
 <!-- MUSIC -->
 <audio id="music" loop>
-<source src="https://assets.mixkit.co/music/preview/mixkit-traditional-indian-wedding-music-1681.mp3">
+  <source src="https://assets.mixkit.co/music/preview/mixkit-traditional-indian-wedding-music-1681.mp3">
 </audio>
 <button class="control music" onclick="toggleMusic()">🎵</button>
 <button class="control theme" onclick="toggleTheme()">🌙</button>
@@ -249,89 +191,57 @@ h1{font-family:'Great Vibes',cursive;font-size:38px;}
   <h1>Wedding Invitation</h1>
   <div class="names">Gourav Mishra ❤️ Nisha Jha</div>
 
-  <div class="place">💍 Wedding – 11 March 2026 | 12:00 AM | Location: Lakshmipur, Bihar</div>
+  <div class="place">💍 Wedding – 11 March 2026 | 12:00 AM<br>📍 Lakshmipur, Bihar</div>
   <div class="countdown" id="wedding"></div>
 
-  <div class="place">🎉 Reception – 16 March 2026 | 7:00 PM | Location: Vidya Nagar, Teja Tola, Katihar</div>
+  <div class="place">🎉 Reception – 16 March 2026 | 7:00 PM<br>📍 Vidya Nagar, Teja Tola, Katihar</div>
   <div class="countdown" id="reception"></div>
 
-  <h3>RSVP</h3>
-  <form onsubmit="addRSVP(event)">
-    <input required id="name" placeholder="Your Name"><br>
-    <input required id="email" type="email" placeholder="Email"><br>
-    <input required id="guest" type="number" min="1" placeholder="Guests"><br>
-    <button class="btn">Submit</button>
-  </form>
+  <h3>RSVP (Fill Form Below 👇)</h3>
 
-  <div id="list">No RSVP yet</div>
+  <!-- GOOGLE FORM -->
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdeFftEIWAuwDi9tjeki8ilPD_ze3spCOSy0ETnXuzD2hQoIA/viewform?embedded=true"></iframe>
 
-  <h3>Scan Invite</h3>
-  <div id="qrcode"></div>
+  <!-- THANK YOU MESSAGE -->
+  <div class="thankyou">
+    ✅ Thank you for your response! <br>
+    Your RSVP has been successfully recorded 💍✨
+  </div>
 
+    <!-- DEVELOPER FOOTER -->
   <div class="footer">
-    <img src="https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768914268/cGhvdG9fNjMwMzA3ODcxODgzMzg4ODk5M195X2F2anBvZA==/preview">
-    Developed by Software Engineer Sunny Mishra
+    Designed & Developed with ❤️ by <br>
+    <strong>Software Engineer Sunny Mishra</strong>
   </div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-// Unlock
 function unlock(){
-  if(pass.value==="wedding2026"){ lockScreen.style.display="none"; }
-  else{ error.innerText="❌ Wrong Password"; }
+  if(pass.value==="wedding2026"){
+    lockScreen.style.display="none";
+  }else{
+    error.innerText="❌ Wrong Password";
+  }
 }
-
-// Music & theme
 function toggleMusic(){music.paused?music.play():music.pause()}
 function toggleTheme(){document.body.classList.toggle("dark")}
 
-// Countdown
 function countdown(id,date){
   const d=date-Date.now();
   document.getElementById(id).innerText =
-  d<0?"🎉 Started":
-  Math.floor(d/86400000)+"d "+
-  Math.floor(d%86400000/3600000)+"h "+
-  Math.floor(d%3600000/60000)+"m "+
-  Math.floor(d%60000/1000)+"s";
+    d<0?"🎉 Started":
+    Math.floor(d/86400000)+"d "+
+    Math.floor(d%86400000/3600000)+"h "+
+    Math.floor(d%3600000/60000)+"m "+
+    Math.floor(d%60000/1000)+"s";
 }
 setInterval(()=>{
   countdown("wedding",new Date("March 11, 2026").getTime());
   countdown("reception",new Date("March 16, 2026 19:00").getTime());
 },1000);
-
-// QR code
-new QRCode(qrcode,{text:location.href,width:100,height:100});
-
-// RSVP logic
-let data=[];
-function addRSVP(e){
-  e.preventDefault();
-  data.push({n:name.value,e:email.value,g:guest.value});
-  list.innerHTML = data.map(d => `${d.n} (${d.g}) – ${d.e}`).join("<br>");
-
-  // Confetti
-  for(let i=0;i<30;i++){
-    const c=document.createElement("div");
-    c.className="confetti-piece";
-    c.style.left=Math.random()*100+"vw";
-    c.style.background=`hsl(${Math.random()*360},70%,50%)`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),2000);
-  }
-
-  // Floating hearts
-  const h = document.createElement("div");
-  h.className="heart";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-
-  e.target.reset();
-}
 </script>
 
 </body>
 </html>
+
