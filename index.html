@@ -11,42 +11,47 @@
 body.dark{
   --bg1:#0f0f0f; --bg2:#2b2b2b; --card:#111; --text:#fff;
 }
-body{margin:0; padding:0; font-family:'Montserrat',sans-serif; text-align:center; color:var(--text); background:linear-gradient(135deg,var(--bg1),var(--bg2)); transition:0.5s; overflow-x:hidden;}
-.card{background:var(--card); max-width:460px; margin:40px auto; padding:30px; border-radius:25px; box-shadow:0 15px 40px rgba(0,0,0,.4); transition:0.4s;}
-.card:hover{transform:scale(1.03); box-shadow:0 0 50px gold;}
-.ganesh img{width:100px; margin-bottom:12px; animation:wiggle 2s ease-in-out infinite;}
+body{margin:0;padding:0;font-family:'Montserrat',sans-serif;text-align:center;color:var(--text);background:linear-gradient(135deg,var(--bg1),var(--bg2));transition:0.5s;overflow-x:hidden;}
+.card{background:var(--card);max-width:480px;margin:40px auto;padding:30px;border-radius:25px;box-shadow:0 15px 40px rgba(0,0,0,.4);transition:0.4s;}
+.card:hover{transform:scale(1.03);box-shadow:0 0 60px gold;}
+.ganesh img{width:100px;margin-bottom:12px;animation:wiggle 2s ease-in-out infinite;}
 @keyframes wiggle {0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
-.mantra-box{border:2px dashed #b22222; border-radius:20px; padding:8px; margin:12px 0 18px; overflow:hidden;}
-.mantra{display:inline-block; white-space:nowrap; font-weight:bold; color:#b22222; animation:slide 12s linear infinite;}
+.mantra-box{border:2px dashed #b22222;border-radius:20px;padding:8px;margin:12px 0 18px;overflow:hidden;}
+.mantra{display:inline-block;white-space:nowrap;font-weight:bold;color:#b22222;animation:slide 12s linear infinite;}
 @keyframes slide{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
 h1{font-family:'Great Vibes',cursive;font-size:38px;margin:10px 0;color:var(--text);}
 .names{font-size:22px;font-weight:bold;margin-bottom:15px;}
 .place{font-size:15px;color:var(--text);margin:6px 0;}
-.countdown{background:rgba(255,182,193,.25);padding:12px;border-radius:15px;margin-top:8px;font-weight:bold;}
+.countdown{background:rgba(255,182,193,.25);padding:12px;border-radius:15px;margin-top:8px;font-weight:bold;transition:0.3s;cursor:default;}
+.countdown:hover{background:rgba(255,182,193,.5);}
 .btn{margin-top:10px;padding:10px 25px;border:none;border-radius:25px;background:#b22222;color:#fff;font-weight:bold;cursor:pointer;transition:0.3s;}
-.btn:hover{background:#ffd700;color:#b22222;}
+.btn:hover{background:#ffd700;color:#b22222;transform:scale(1.05);}
 .control{position:fixed;right:15px;width:45px;height:45px;border:none;border-radius:50%;font-size:20px;cursor:pointer;z-index:6;}
 .control.music{top:15px;background:#b22222;color:#fff;}
 .control.theme{top:70px;background:#333;color:#fff;}
 .theme-select{margin-top:15px;padding:5px 10px;border-radius:10px;font-weight:bold;cursor:pointer;}
-.footer{margin-top:25px;font-size:16px; display:flex; align-items:center; justify-content:center; gap:10px; opacity:.8;}
-.footer img{width:35px;height:35px; border-radius:50%;}
+.footer{margin-top:25px;font-size:16px; display:flex; align-items:center; justify-content:center; gap:10px; opacity:.9; font-weight:bold;}
+.footer img{width:35px;height:35px;border-radius:50%;}
 .petal{position:fixed;top:-20px;width:12px;height:12px;background:pink;border-radius:50%;animation:fall linear infinite;opacity:.8;}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0;}}
 .sparkle{position:absolute;width:4px;height:4px;background:gold;border-radius:50%;opacity:0.8;animation:sparkleAnim linear infinite;}
 @keyframes sparkleAnim{0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(360deg);opacity:0;}}
+.rsvp-form input, .rsvp-form select{width:80%;padding:8px;margin:5px 0;border-radius:10px;border:1px solid #ccc;transition:0.3s;}
+.rsvp-form input:focus, .rsvp-form select:focus{border-color:#b22222;outline:none;transform:scale(1.02);}
+#rsvpList{overflow-x:auto;margin-top:10px;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
+#rsvpList table{width:100%;border-collapse:collapse;transition:0.3s;}
+#rsvpList th, #rsvpList td{border-bottom:1px solid #ccc;padding:8px;text-align:left;transition:0.2s;}
+#rsvpList tr:hover{background:rgba(255,215,0,0.2);transform:scale(1.02);}
 @media(max-width:500px){.card{padding:20px;}h1{font-size:32px;}.names{font-size:20px;}}
-.rsvp-form input, .rsvp-form select{width:80%;padding:8px;margin:5px 0;border-radius:10px;border:1px solid #ccc;}
-#rsvpList{overflow-x:auto;margin-top:10px;}
-#rsvpList table{width:100%;border-collapse:collapse;}
-#rsvpList th, #rsvpList td{border-bottom:1px solid #ccc;padding:8px;text-align:left;}
+.confetti-piece{position:absolute;width:8px;height:8px;background:gold;pointer-events:none;opacity:0.9;animation:confettiFall 2s linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(80vh) rotate(720deg);opacity:0;}}
 </style>
 </head>
 <body>
 
 <!-- Music -->
 <audio id="music" loop>
-  <source src="music/sehnai.mp3" type="audio/mpeg">
+  <source src="https://assets.mixkit.co/music/preview/mixkit-traditional-indian-wedding-music-1681.mp3" type="audio/mpeg">
 </audio>
 <button class="control music" onclick="toggleMusic()">🎵</button>
 <button class="control theme" onclick="toggleTheme()">🌙</button>
@@ -169,7 +174,7 @@ function changeTheme(name){
 // QR Code
 new QRCode(document.getElementById("qrcode"), {text:window.location.href,width:100,height:100});
 
-// RSVP Submit
+// RSVP Submit + confetti
 let rsvpData=[];
 function addRSVP(e){
   e.preventDefault();
@@ -179,6 +184,7 @@ function addRSVP(e){
   rsvpData.push({name,email,guests});
   renderRSVP();
   document.querySelector(".rsvp-form").reset();
+  createConfetti();
 }
 function renderRSVP(){
   if(rsvpData.length===0){document.getElementById("rsvpList").innerHTML="No RSVP yet"; return;}
@@ -187,11 +193,22 @@ function renderRSVP(){
   html+="</table>";
   document.getElementById("rsvpList").innerHTML=html;
 }
-// Reset RSVP List
 function resetRSVP(){
   if(confirm("Are you sure you want to clear all RSVP entries?")){
     rsvpData=[];
     renderRSVP();
+  }
+}
+
+// Confetti animation
+function createConfetti(){
+  for(let i=0;i<30;i++){
+    const c=document.createElement("div");
+    c.className="confetti-piece";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},70%,50%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),2000);
   }
 }
 </script>
