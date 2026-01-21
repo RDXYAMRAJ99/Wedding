@@ -9,29 +9,45 @@
 
 <style>
 :root{
-  --bg1:#ff9a9e;
-  --bg2:#fad0c4;
   --accent:#b22222;
   --text:#222;
   --card:#ffffff;
 }
 
-/* ✅ DARK MODE COLORS */
 body.dark{
-  --bg1:#0f0f0f;
-  --bg2:#1f1f1f;
-  --accent:#ff6f91;
   --text:#f5f5f5;
   --card:#1a1a1a;
 }
 
+/* BODY BACKGROUND */
 body{
   margin:0;
   font-family:'Montserrat',sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
   color:var(--text);
   text-align:center;
-  transition:.4s;
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e")
+    center/cover fixed no-repeat;
+  overflow-x:hidden;
+}
+
+/* BUBBLES */
+.bubble{
+  position:fixed;
+  bottom:-100px;
+  background:rgba(255,255,255,0.25);
+  border-radius:50%;
+  animation:floatUp linear infinite;
+  pointer-events:none;
+  backdrop-filter:blur(2px);
+}
+@keyframes floatUp{
+  to{
+    transform:translateY(-120vh) translateX(50px);
+    opacity:0;
+  }
 }
 
 /* CARD */
@@ -40,30 +56,31 @@ body{
   margin:40px auto;
   border-radius:28px;
   overflow:hidden;
-  background:var(--card);
-  backdrop-filter:blur(6px);
-  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  background:rgba(255,255,255,0.92);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
   animation:fadeUp 1s ease;
   transition:.4s;
 }
+.card:hover{
+  transform:scale(1.02);
+}
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(30px);}
+  from{opacity:0; transform:translateY(40px);}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* PHOTO SECTION */
-.photo-bg{
+/* HERO IMAGE */
+.hero{
   height:390px;
   background:
-    linear-gradient(rgba(255,182,193,0.35),rgba(255,182,193,0.35)),
-    url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview") center/cover no-repeat;
+    linear-gradient(rgba(255,182,193,.35),rgba(255,182,193,.35)),
+    url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview")
+    center/cover no-repeat;
 }
 
 /* CONTENT */
-.content{
-  padding:30px;
-}
+.content{ padding:30px; }
 
 /* GANESH */
 .ganesh img{
@@ -102,7 +119,6 @@ h1{
   font-family:'Great Vibes',cursive;
   font-size:38px;
   color:var(--accent);
-  margin:15px 0;
 }
 
 .names{
@@ -111,9 +127,7 @@ h1{
 }
 
 /* SECTIONS */
-.section{
-  margin:20px 0;
-}
+.section{ margin:20px 0; }
 .countdown{
   background:rgba(255,182,193,.35);
   padding:12px;
@@ -139,6 +153,7 @@ h1{
   border-radius:50%;
   font-size:20px;
   cursor:pointer;
+  z-index:10;
 }
 .music{top:15px;background:#b22222;color:#fff;}
 .theme{top:70px;background:#333;color:#fff;}
@@ -153,6 +168,7 @@ h1{
 
 <body>
 
+<!-- MUSIC -->
 <audio id="music" loop>
   <source src="https://assets.mixkit.co/music/preview/mixkit-traditional-indian-wedding-music-1681.mp3">
 </audio>
@@ -162,7 +178,7 @@ h1{
 
 <div class="card">
 
-  <div class="photo-bg"></div>
+  <div class="hero"></div>
 
   <div class="content">
 
@@ -207,16 +223,14 @@ h1{
 </div>
 
 <script>
+/* MUSIC */
 const music=document.getElementById("music");
-function toggleMusic(){
-  music.paused ? music.play() : music.pause();
-}
+function toggleMusic(){ music.paused ? music.play() : music.pause(); }
 
-/* ✅ DARK MODE TOGGLE */
-function toggleTheme(){
-  document.body.classList.toggle("dark");
-}
+/* DARK MODE */
+function toggleTheme(){ document.body.classList.toggle("dark"); }
 
+/* COUNTDOWN */
 function countdown(id,date){
   const el=document.getElementById(id);
   const d=date-Date.now();
@@ -227,11 +241,22 @@ function countdown(id,date){
   const secs=Math.floor((d%(1000*60))/1000);
   el.innerHTML=`${days}d ${hrs}h ${mins}m ${secs}s`;
 }
-
 setInterval(()=>{
   countdown("wedding",new Date("March 11, 2026 00:00:00").getTime());
   countdown("reception",new Date("March 16, 2026 19:00:00").getTime());
 },1000);
+
+/* BUBBLES CREATE */
+for(let i=0;i<25;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  const size=Math.random()*40+10;
+  b.style.width=size+"px";
+  b.style.height=size+"px";
+  b.style.left=Math.random()*100+"vw";
+  b.style.animationDuration=(10+Math.random()*10)+"s";
+  document.body.appendChild(b);
+}
 </script>
 
 </body>
