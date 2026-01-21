@@ -2,134 +2,140 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Gourav ❤️ Nisha Wedding Invite</title>
+<title>Wedding Invitation | Gourav ❤️ Nisha</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --card:#ffffffee; --text:#222;
-}
-body.dark{
-  --card:#111111ee; --text:#fff;
+  --accent:#b22222;
+  --text:#222;
+  --card-bg:rgba(255,255,255,0.75);
 }
 
+/* 🌸 BACKGROUND WITH BLUR + ZOOM */
 body{
   margin:0;
   font-family:'Montserrat',sans-serif;
   color:var(--text);
-  background:
-    linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),
-    url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e") center/cover fixed;
-  transition:.5s;
+  text-align:center;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-/* LOCK */
-#lockScreen{
+body::before{
+  content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#b22222,#ff9a9e);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+  background:
+    linear-gradient(rgba(255,154,158,0.5),rgba(250,208,196,0.5)),
+    url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview") center/cover no-repeat;
+  filter:blur(6px);
+  transform:scale(1);
+  animation:bgZoom 25s ease-in-out infinite alternate;
+  z-index:-2;
 }
-.lock-box{
-  background:#fff;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-}
-.lock-box h2{
-  font-family:'Great Vibes',cursive;
-  font-size:32px;
-  color:#b22222;
-}
-.lock-box input{
-  padding:10px;
-  width:80%;
-  border-radius:10px;
-}
-.lock-box button{
-  margin-top:10px;
-  padding:10px 25px;
-  border:none;
-  border-radius:25px;
-  background:#b22222;
-  color:#fff;
-  font-weight:bold;
-}
-#error{color:red;margin-top:5px}
 
-/* CARD */
+@keyframes bgZoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.15);}
+}
+
+/* 🌙 DARK MODE */
+body.dark::before{
+  background:
+    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+    url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview") center/cover no-repeat;
+}
+
+body.dark{
+  --text:#fff;
+  --card-bg:rgba(20,20,20,0.65);
+}
+
+/* 💎 GLASS CARD */
 .card{
   max-width:500px;
   margin:40px auto;
-  background:var(--card);
   padding:30px;
-  border-radius:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,.5);
-  text-align:center;
-  animation:shimmer 3s infinite alternate;
-}
-@keyframes shimmer{
-  from{box-shadow:0 15px 40px rgba(255,182,193,.5);}
-  to{box-shadow:0 20px 60px rgba(255,223,186,.7);}
+  border-radius:28px;
+  background:var(--card-bg);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 0 0 1px rgba(255,255,255,0.2);
+  animation:fadeUp 1s ease;
 }
 
-.ganesh img{width:100px;animation:wiggle 2s infinite;}
-@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
+/* GANESH */
+.ganesh img{
+  width:90px;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+/* MANTRA */
 .mantra-box{
-  border:2px dashed #b22222;
+  border:2px dashed var(--accent);
   border-radius:20px;
   padding:8px;
-  margin:12px 0;
+  margin:15px 0;
   overflow:hidden;
 }
 .mantra{
-  display:inline-block;
   white-space:nowrap;
-  color:#b22222;
   font-weight:bold;
+  color:var(--accent);
   animation:slide 12s linear infinite;
 }
 @keyframes slide{
-  from{transform:translateX(100%)}
-  to{transform:translateX(-100%)}
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
 }
 
-h1{font-family:'Great Vibes',cursive;font-size:38px;}
-.names{font-size:22px;font-weight:bold;}
-.place{margin:8px 0;font-weight:bold;}
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:38px;
+  margin:15px 0;
+  color:var(--accent);
+}
+.names{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
 
+/* SECTIONS */
+.section{
+  margin:20px 0;
+}
 .countdown{
-  background:rgba(255,182,193,.35);
-  padding:10px;
-  border-radius:15px;
-  margin-bottom:10px;
-  font-weight:bold;
-}
-
-/* GOOGLE FORM */
-iframe{
-  width:100%;
-  height:520px; /* 👈 frame chhota */
-  border:none;
-  border-radius:15px;
-}
-
-/* THANK YOU BOX */
-.thankyou{
-  margin-top:12px;
+  background:rgba(255,182,193,.3);
   padding:12px;
-  background:rgba(144,238,144,.25);
-  border:2px dashed #2e8b57;
   border-radius:15px;
-  color:#2e8b57;
   font-weight:bold;
-  font-size:14px;
+}
+
+/* VIDEO */
+.video-box{
+  margin-top:20px;
+}
+.video-box iframe,
+.video-box video{
+  width:100%;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 /* CONTROLS */
@@ -144,26 +150,24 @@ iframe{
   cursor:pointer;
   z-index:10;
 }
-.music{top:15px;background:#b22222;color:#fff}
-.theme{top:70px;background:#333;color:#fff}
+.music{top:15px;background:#b22222;color:#fff;}
+.theme{top:70px;background:#333;color:#fff;}
 
-/* FOOTER */
 .footer{
   margin-top:25px;
-  font-size:13px;
-  opacity:.85;
+  font-size:16px;
+  opacity:0.9;
 }
 </style>
 </head>
 
 <body>
 
-
-
-<!-- MUSIC -->
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
   <source src="https://assets.mixkit.co/music/preview/mixkit-traditional-indian-wedding-music-1681.mp3">
 </audio>
+
 <button class="control music" onclick="toggleMusic()">🎵</button>
 <button class="control theme" onclick="toggleTheme()">🌙</button>
 
@@ -175,55 +179,65 @@ iframe{
 
   <div class="mantra-box">
     <div class="mantra">
-      ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+      ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।
+      निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
     </div>
   </div>
 
   <h1>Wedding Invitation</h1>
   <div class="names">Gourav Mishra ❤️ Nisha Jha</div>
 
-  <div class="place">💍 Wedding – 11 March 2026 | 12:00 AM<br>📍 Lakshmipur, Bihar</div>
-  <div class="countdown" id="wedding"></div>
-
-  <div class="place">🎉 Reception – 16 March 2026 | 7:00 PM<br>📍 Vidya Nagar, Teja Tola, Katihar</div>
-  <div class="countdown" id="reception"></div>
-
-  <h3>RSVP (Fill Form Below 👇)</h3>
-
-  <!-- GOOGLE FORM -->
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdeFftEIWAuwDi9tjeki8ilPD_ze3spCOSy0ETnXuzD2hQoIA/viewform?embedded=true"></iframe>
-
-  <!-- THANK YOU MESSAGE -->
-  <div class="thankyou">
-    ✅ Thank you for your response! <br>
-    Your RSVP has been successfully recorded 💍✨
+  <div class="section">
+    💒 <b>Wedding</b><br>
+    11 March 2026 | 12:00 AM<br>
+    Lakshmipur, Bihar
+    <div class="countdown" id="wedding"></div>
   </div>
 
-    <!-- DEVELOPER FOOTER -->
+  <div class="section">
+    🎉 <b>Reception</b><br>
+    16 March 2026 | 7:00 PM<br>
+    Vidya Nagar, Teja Tola, Katihar
+    <div class="countdown" id="reception"></div>
+  </div>
+
+  <div class="video-box">
+    <h3>🎥 Our Story</h3>
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID"
+      allowfullscreen>
+    </iframe>
+  </div>
+
   <div class="footer">
-    Designed & Developed with ❤️ by <br>
-    <strong>Software Engineer Sunny Mishra</strong>
+    Developed by Sunny Mishra 👨‍💻
   </div>
 
 </div>
 
 <script>
-
-function toggleMusic(){music.paused?music.play():music.pause()}
-function toggleTheme(){document.body.classList.toggle("dark")}
+const music=document.getElementById("music");
+function toggleMusic(){
+  music.paused ? music.play() : music.pause();
+}
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+}
 
 function countdown(id,date){
+  const el=document.getElementById(id);
   const d=date-Date.now();
-  document.getElementById(id).innerText =
-    d<0?"🎉 Started":
-    Math.floor(d/86400000)+"d "+
-    Math.floor(d%86400000/3600000)+"h "+
-    Math.floor(d%3600000/60000)+"m "+
-    Math.floor(d%60000/1000)+"s";
+  if(d<0){el.innerHTML="🎉 Started";return;}
+  const days=Math.floor(d/(1000*60*60*24));
+  const hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const mins=Math.floor((d%(1000*60*60))/(1000*60));
+  const secs=Math.floor((d%(1000*60))/1000);
+  el.innerHTML=`${days}d ${hrs}h ${mins}m ${secs}s`;
 }
+
 setInterval(()=>{
-  countdown("wedding",new Date("March 11, 2026").getTime());
-  countdown("reception",new Date("March 16, 2026 19:00").getTime());
+  countdown("wedding",new Date("March 11, 2026 00:00:00").getTime());
+  countdown("reception",new Date("March 16, 2026 19:00:00").getTime());
 },1000);
 </script>
 
