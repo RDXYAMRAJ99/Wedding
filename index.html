@@ -23,7 +23,7 @@ body{
   color:var(--text);
   text-align:center;
   min-height:100vh;
-  background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url("https://png.pngtree.com/background/20250102/original/pngtree-a-romantic-white-and-gold-wedding-ceremony-with-delicate-floral-arrangements-picture-image_16015177.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1470&q=80") center/cover fixed no-repeat;
   overflow-x:hidden;
 }
 
@@ -44,78 +44,84 @@ body{
 /* CARD */
 .card{
   max-width:500px;
-  margin:40px auto;
+  margin:20px auto;
   border-radius:28px;
   overflow:hidden;
   background:rgba(255,255,255,0.92);
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
   animation:fadeUp 1s ease;
   transition:.4s;
 }
 .card:hover{ transform:scale(1.02); }
 @keyframes fadeUp{ from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
 
-/* HERO IMAGE FIXED FOR MOBILE + FACE CENTER */
+/* HERO IMAGE MOBILE FRIENDLY */
 .hero {
-  height: 45vh; /* Mobile friendly */
+  height: 45vh;
   background-image: linear-gradient(rgba(255,182,193,.35), rgba(255,182,193,.35)), url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview");
-  background-position: center top; /* Focus face on top */
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 /* CONTENT */
-.content{ padding:30px; }
+.content{ padding:20px; }
 
 /* GANESH */
 .ganesh img{
-  width:85px;
-  margin-top:-45px;
+  width:70px;
+  margin-top:-35px;
   background:#fff;
   border-radius:50%;
   padding:5px;
   animation:float 3s ease-in-out infinite;
 }
-@keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+@keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
 
 /* MANTRA */
 .mantra-box{
   border:2px dashed var(--accent);
   border-radius:18px;
-  padding:8px;
-  margin:15px 0;
+  padding:6px;
+  margin:12px 0;
   overflow:hidden;
 }
 .mantra{
   white-space:nowrap;
   font-weight:bold;
   color:var(--accent);
+  font-size:14px;
   animation:slide 12s linear infinite;
 }
 @keyframes slide{ 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
 
 h1{
   font-family:'Great Vibes',cursive;
-  font-size:38px;
+  font-size:32px;
   color:var(--accent);
+  margin:8px 0;
 }
-.names{ font-size:22px; font-weight:bold; }
+.names{ font-size:20px; font-weight:bold; margin-bottom:10px; }
 
 /* SECTIONS */
-.section{ margin:20px 0; }
+.section{ margin:15px 0; font-size:16px; }
 .countdown{
   background:rgba(255,182,193,.35);
-  padding:12px;
-  border-radius:15px;
+  padding:10px;
+  border-radius:12px;
   font-weight:bold;
+  margin-top:6px;
 }
 
 /* VIDEO */
+.video-box{
+  margin-top:15px;
+}
 .video-box iframe{
   width:100%;
-  height:230px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  height:200px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,.3);
 }
 
 /* CONTROLS */
@@ -132,7 +138,17 @@ h1{
 }
 .music{top:15px;background:#b22222;color:#fff;}
 .theme{top:70px;background:#333;color:#fff;}
-.footer{ margin:25px 0; font-size:16px; opacity:.9; }
+.footer{ margin:20px 0; font-size:14px; opacity:.9; }
+
+/* RESPONSIVE TEXT */
+@media(max-width:400px){
+  h1{ font-size:28px; }
+  .names{ font-size:18px; }
+  .section{ font-size:14px; }
+  .mantra{ font-size:12px; }
+  .video-box iframe{ height:180px; }
+  .ganesh img{ width:60px; margin-top:-30px; }
+}
 </style>
 </head>
 <body>
@@ -205,3 +221,4 @@ for(let i=0;i<25;i++){
 </script>
 </body>
 </html>
+
