@@ -4,221 +4,229 @@
 <meta charset="UTF-8">
 <title>Wedding Invitation | Gourav ❤️ Nisha</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --accent:#b22222;
-  --text:#222;
-  --card:#ffffff;
-}
-body.dark{
-  --text:#f5f5f5;
-  --card:#1a1a1a;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-/* BODY BACKGROUND */
 body{
-  margin:0;
-  font-family:'Montserrat',sans-serif;
-  color:var(--text);
-  text-align:center;
   min-height:100vh;
-  background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1470&q=80") center/cover fixed no-repeat;
-  overflow-x:hidden;
+  background: radial-gradient(circle at top, #3a2a00, #0b0800);
+  font-family:'Montserrat', sans-serif;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-/* BUBBLES */
-.bubble{
-  position:fixed;
-  bottom:-100px;
-  background:rgba(255,255,255,0.25);
+/* Golden particles */
+.particle{
+  position:absolute;
+  width:6px;height:6px;
+  background:#ffd700;
   border-radius:50%;
-  animation:floatUp linear infinite;
-  pointer-events:none;
-  backdrop-filter:blur(2px);
+  opacity:.6;
+  animation:float linear infinite;
 }
-@keyframes floatUp{
-  to{ transform:translateY(-120vh) translateX(50px); opacity:0; }
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
 }
 
-/* CARD */
 .card{
-  max-width:500px;
-  margin:20px auto;
-  border-radius:28px;
-  overflow:hidden;
-  background:rgba(255,255,255,0.92);
-  box-shadow:0 20px 60px rgba(0,0,0,.4);
-  animation:fadeUp 1s ease;
-  transition:.4s;
-}
-.card:hover{ transform:scale(1.02); }
-@keyframes fadeUp{ from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
-
-/* HERO IMAGE MOBILE FRIENDLY */
-.hero {
-  height: 45vh;
-  background-image: linear-gradient(rgba(255,182,193,.35), rgba(255,182,193,.35)), url("https://res-console.cloudinary.com/dtrcolbg5/thumbnails/v1/image/upload/v1768999729/Z291cmF2bmlzaGFfa3hkZHZv/preview");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  max-width:420px;
+  width:95%;
+  background: linear-gradient(145deg,#1a1200,#000);
+  border:2px solid #d4af37;
+  border-radius:24px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(212,175,55,0.5);
+  position:relative;
+  z-index:2;
 }
 
-/* CONTENT */
-.content{ padding:20px; }
-
-/* GANESH */
-.ganesh img{
-  width:70px;
-  margin-top:-35px;
-  background:#fff;
-  border-radius:50%;
-  padding:5px;
-  animation:float 3s ease-in-out infinite;
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(212,175,55,0.15),transparent);
+  animation:shine 4s infinite;
 }
-@keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
-
-/* MANTRA */
-.mantra-box{
-  border:2px dashed var(--accent);
-  border-radius:18px;
-  padding:6px;
-  margin:12px 0;
-  overflow:hidden;
+@keyframes shine{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
 }
-.mantra{
-  white-space:nowrap;
-  font-weight:bold;
-  color:var(--accent);
-  font-size:14px;
-  animation:slide 12s linear infinite;
-}
-@keyframes slide{ 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
 
-h1{
-  font-family:'Great Vibes',cursive;
-  font-size:32px;
-  color:var(--accent);
-  margin:8px 0;
+.title{
+  font-family:'Great Vibes', cursive;
+  font-size:46px;
+  color:#ffd700;
 }
-.names{ font-size:20px; font-weight:bold; margin-bottom:10px; }
 
-/* SECTIONS */
-.section{ margin:15px 0; font-size:16px; }
-.countdown{
-  background:rgba(255,182,193,.35);
+.subtitle{letter-spacing:2px;color:#e5c96e}
+
+.names{
+  margin:20px 0;
+  font-family:'Playfair Display', serif;
+  font-size:26px;
+}
+
+.heart{color:#ffd700;font-size:28px;margin:0 8px}
+
+.section{
+  margin:18px 0;
+  padding:15px;
+  border:1px solid rgba(212,175,55,0.4);
+  border-radius:14px;
+  background:rgba(0,0,0,0.4);
+}
+
+.section h3{color:#ffd700;margin-bottom:6px}
+.section p{font-size:14px;color:#f5e6a8}
+
+.timer{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:10px;
+}
+
+.box{
+  background:#000;
+  border:1px solid #d4af37;
   padding:10px;
   border-radius:12px;
-  font-weight:bold;
-  margin-top:6px;
+  min-width:60px;
 }
 
-/* VIDEO */
-.video-box{
-  margin-top:15px;
-}
-.video-box iframe{
-  width:100%;
-  height:200px;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,.3);
-}
-
-/* CONTROLS */
-.control{
-  position:fixed;
-  right:15px;
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:50%;
+.box span{
+  display:block;
   font-size:20px;
-  cursor:pointer;
-  z-index:10;
+  font-weight:bold;
+  color:#ffd700;
 }
-.music{top:15px;background:#b22222;color:#fff;}
-.theme{top:70px;background:#333;color:#fff;}
-.footer{ margin:20px 0; font-size:14px; opacity:.9; }
 
-/* RESPONSIVE TEXT */
-@media(max-width:400px){
-  h1{ font-size:28px; }
-  .names{ font-size:18px; }
-  .section{ font-size:14px; }
-  .mantra{ font-size:12px; }
-  .video-box iframe{ height:180px; }
-  .ganesh img{ width:60px; margin-top:-30px; }
+.box small{font-size:11px;color:#e5c96e}
+
+.clock{
+  margin-top:12px;
+  color:#ffd700;
+  font-size:14px;
+}
+
+.music-btn{
+  margin-top:16px;
+  padding:8px 16px;
+  border-radius:20px;
+  border:1px solid #ffd700;
+  background:transparent;
+  color:#ffd700;
+  cursor:pointer;
+}
+
+.footer{
+  margin-top:22px;
+  font-size:12px;
+  color:#e5c96e;
 }
 </style>
 </head>
+
 <body>
+
+<script>
+for(let i=0;i<25;i++){
+  let p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(8+Math.random()*8)+"s";
+  document.body.appendChild(p);
+}
+</script>
+
 <div class="card">
-  <div class="hero"></div>
-  <div class="content">
-    <div class="ganesh">
-      <img src="https://i.pinimg.com/originals/1c/92/4b/1c924badb214cd343da2e8997d3a0700.gif">
-    </div>
-    <div class="mantra-box">
-      <div class="mantra"> ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥ </div>
-    </div>
-    <h1>Wedding Invitation</h1>
-    <div class="names">Gourav Mishra ❤️ Nisha Jha</div>
-    <div class="section">
-      💒 <b>Wedding</b><br>
-      11 March 2026 | 12:00 AM<br>
-      Lakshmipur, Bihar
-      <div class="countdown" id="wedding"></div>
-    </div>
-    <div class="section">
-      🎉 <b>Reception</b><br>
-      16 March 2026 | 7:00 PM<br>
-      Vidya Nagar, Teja Tola, Katihar
-      <div class="countdown" id="reception"></div>
-    </div>
-    <div class="video-box">
-      <h3>🎥 Our Story</h3>
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-    </div>
-    <div class="footer"> Developed by Sunny Mishra 👨‍💻 </div>
+  <div class="title">Wedding Invitation</div>
+  <div class="subtitle">Together with their families</div>
+
+  <div class="names">
+    Gourav Mishra <span class="heart">❤</span> Nisha Jha
+  </div>
+
+  <div class="section">
+    <h3>Wedding Ceremony</h3>
+    <p>📍 Lakshmipur</p>
+    <p>🕛 12:00 AM | 11 March</p>
+  </div>
+
+  <h3 style="color:#ffd700">Wedding Countdown</h3>
+  <div class="timer">
+    <div class="box"><span id="wd">0</span><small>Days</small></div>
+    <div class="box"><span id="wh">0</span><small>Hours</small></div>
+    <div class="box"><span id="wm">0</span><small>Minutes</small></div>
+    <div class="box"><span id="ws">0</span><small>Seconds</small></div>
+  </div>
+
+  <div class="section">
+    <h3>Reception</h3>
+    <p>📍 Vidya Nagar, Teja Tola, Katihar</p>
+    <p>🕖 7:00 PM | 16 March</p>
+  </div>
+
+  <h3 style="color:#ffd700">Reception Countdown</h3>
+  <div class="timer">
+    <div class="box"><span id="rd">0</span><small>Days</small></div>
+    <div class="box"><span id="rh">0</span><small>Hours</small></div>
+    <div class="box"><span id="rm">0</span><small>Minutes</small></div>
+    <div class="box"><span id="rs">0</span><small>Seconds</small></div>
+  </div>
+
+  <div class="clock" id="clock"></div>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵 Play / Pause Music</button>
+
+  <div class="footer">
+    We request your gracious presence & blessings ✨<br>
+    <strong>Developer: Sunny Mishra 😎</strong>
   </div>
 </div>
 
+<audio id="bgm" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
 <script>
-/* MUSIC */
-const music=document.getElementById("music");
-function toggleMusic(){ music.paused ? music.play() : music.pause(); }
+const weddingDate = new Date("March 11, 2026 00:00:00").getTime();
+const receptionDate = new Date("March 16, 2026 19:00:00").getTime();
 
-/* DARK MODE */
-function toggleTheme(){ document.body.classList.toggle("dark"); }
-
-/* COUNTDOWN */
-function countdown(id,date){
-  const el=document.getElementById(id);
-  const d=date-Date.now();
-  if(d<0){el.innerHTML="🎉 Started";return;}
-  const days=Math.floor(d/(1000*60*60*24));
-  const hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  const mins=Math.floor((d%(1000*60*60))/(1000*60));
-  const secs=Math.floor((d%(1000*60))/1000);
-  el.innerHTML=`${days}d ${hrs}h ${mins}m ${secs}s`;
-}
 setInterval(()=>{
-  countdown("wedding",new Date("March 11, 2026 00:00:00").getTime());
-  countdown("reception",new Date("March 16, 2026 19:00:00").getTime());
+  const now = new Date().getTime();
+
+  let wd = weddingDate - now;
+  let rd = receptionDate - now;
+
+  document.getElementById("wd").innerText=Math.floor(wd/(1000*60*60*24));
+  document.getElementById("wh").innerText=Math.floor((wd%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("wm").innerText=Math.floor((wd%(1000*60*60))/(1000*60));
+  document.getElementById("ws").innerText=Math.floor((wd%(1000*60))/1000);
+
+  document.getElementById("rd").innerText=Math.floor(rd/(1000*60*60*24));
+  document.getElementById("rh").innerText=Math.floor((rd%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("rm").innerText=Math.floor((rd%(1000*60*60))/(1000*60));
+  document.getElementById("rs").innerText=Math.floor((rd%(1000*60))/1000);
+
+  document.getElementById("clock").innerText =
+    "Current Time: " + new Date().toLocaleTimeString();
 },1000);
 
-/* BUBBLES CREATE */
-for(let i=0;i<25;i++){
-  const b=document.createElement("div");
-  b.className="bubble";
-  const size=Math.random()*40+10;
-  b.style.width=size+"px";
-  b.style.height=size+"px";
-  b.style.left=Math.random()*100+"vw";
-  b.style.animationDuration=(10+Math.random()*10)+"s";
-  document.body.appendChild(b);
+function toggleMusic(){
+  const m=document.getElementById("bgm");
+  m.paused ? m.play() : m.pause();
 }
 </script>
+
 </body>
-</html>
+  </html>
 
